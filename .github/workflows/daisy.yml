@@ -1,0 +1,28 @@
+#
+# Copyright  2020-2021, Sudhir Yadav "TheSanty" <sudhiryadav.igi@gmail.com>
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+name: Building Daisy Kernel
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+env:
+  CHAT_ID: "${{ secrets.CHAT_ID }}"
+  BOT_TOKEN: "${{ secrets.BOT_TOKEN }}"
+  GH_TOKEN: "${{ secrets.GH_TOKEN }}"  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start Building
+        run: bash build_daisy.sh
